@@ -44,7 +44,8 @@ aldryn_addons.settings.load(locals())
 
 INSTALLED_APPS.extend([
     # Extend the INSTALLED_APPS setting by listing additional applications here
-    'ckeditor'
+    'ckeditor',
+    'wiki'
 ])
 
 # To see the settings that have been applied, use the Django diffsettings
