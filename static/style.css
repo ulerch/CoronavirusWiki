@@ -1,0 +1,12 @@
+.center {
+  text-align: center;
+}
+
+table td, table th {
+  border: 1px solid;
+}
+
+table thead th::first-letter {
+  color: red;
+  font-weight: 900;
+}
