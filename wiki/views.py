@@ -6,8 +6,14 @@ def wikiMatrix(request):
     context['cols'] = Column.objects.all()
     context['rows'] = Row.objects.all()
 
-    for r in context['rows']:
-        for c in context['cols']:
-            res = WikiEntry.objects.filter(row=r.id, column=c.id).count()
-
     return render(request, 'wiki/index.html', context)
+
+
+def wikiList(request, rpk, cpk):
+    r = Row.objects.get(pk=rpk)
+    c = Column.objects.get(pk=cpk)
+    context = {}
+    context['title'] = r.label + ' - ' + c.label
+    context['entries'] = WikiEntry.objects.filter(row=rpk, column=cpk)
+
+    return render(request, 'wiki/list.html', context)

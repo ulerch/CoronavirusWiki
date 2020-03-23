@@ -1,0 +1,17 @@
+{% extends "wiki/base.html" %}
+{% load staticfiles i18n wiki_tags %}
+
+{% block content %}
+
+    <h2>{{ title }}</h2>
+
+    <a href="javascript:history.back()">back to overview</a>
+
+    {% for entry in entries %}
+      <h3>{{ entry.title }}</h3>
+      <p>{{ entry.text | safe }}</p>
+    {% endfor %}
+
+    <button class="entryAdd">add your own thoughts</button>
+
+{% endblock content %}

@@ -1,35 +1,13 @@
+{% extends "wiki/base.html" %}
 {% load staticfiles i18n wiki_tags %}
 
-<!doctype html>
-<html class="no-js" lang="en">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="wiki">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Urs Lerch">
-
-    <title>MatrixWiki</title>
-
-    <link rel="apple-touch-icon" href="{% static 'img/favicon.ico' %}">
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-
-    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all">
-
-    <!-- Divio Cloud -->
-    {{ ALDRYN_SNAKE.render_head }}
-
-  </head>
-
-  <body>
-    <h1>Coronavirus Wiki</h1>
-    <table width="100%">
+{% block content %}
+    <table>
       <thead>
         <tr>
           <th width="20%"> </td>
           {% for col in cols %}
-            <th width="20%">{{ col.label }}</td>
+            <th class="center" width="20%">{{ col.label }}</td>
           {% endfor %}
         </tr>
       </thead>
@@ -38,14 +16,10 @@
         <tr>
           <td>{{ row.label }}</td>
           {% for col in cols %}
-            <td class="center">{% wiki_count row.pk col.pk %} entries</td>
+            <td class="detail_link center" row={{ row.pk }} col={{ col.pk }}>{% wiki_count row.pk col.pk %} entries</td>
           {% endfor %}
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <!-- Divio Cloud -->
-    {{ ALDRYN_SNAKE.render_tail }}
-  </body>
-
-</html>
+{% endblock content %}
