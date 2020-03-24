@@ -1,33 +1,38 @@
 from django.shortcuts import render
-from .models import Row, Column, WikiEntry
+from .models import Register, Row, Column, WikiEntry
 from .forms import CreateForm
+
+
+def register(request):
+    return {'register': Register.objects.all()}
 
 
 def wikiMatrix(request):
     context = {}
-    context['cols'] = Column.objects.all()
-    context['rows'] = Row.objects.all()
+    regPk = Register.objects.get(position=1).pk;
+    context['cols'] = Column.objects.filter(register=regPk)
+    context['rows'] = Row.objects.filter(register=regPk)
 
     return render(request, 'wiki/index.html', context)
 
 
-def wikiList(request, rpk, cpk):
-    r = Row.objects.get(pk=rpk)
-    c = Column.objects.get(pk=cpk)
+def wikiList(request, rowPk, colPk):
+    r = Row.objects.get(pk=rowPk)
+    c = Column.objects.get(pk=colPk)
     context = {}
-    context['row'] = rpk;
-    context['col'] = cpk;
+    context['row'] = rowPk;
+    context['col'] = colPk;
     context['title'] = r.label + ' - ' + c.label
-    context['entries'] = WikiEntry.objects.filter(row=rpk, column=cpk)
+    context['entries'] = WikiEntry.objects.filter(row=rowPk, column=colPk)
 
     return render(request, 'wiki/list.html', context)
 
 
-def wikiCreateView(request, rpk, cpk):
-    r = Row.objects.get(pk=rpk)
-    c = Column.objects.get(pk=cpk)
+def wikiCreateView(request, rowPk, colPk):
+    r = Row.objects.get(pk=rowPk)
+    c = Column.objects.get(pk=colPk)
     context = r.label + ' - ' + c.label
-    initial = {'row': rpk, 'column': cpk}
+    initial = {'row': rowPk, 'column': colPk}
     if request.method == 'POST':
         form = CreateForm(request.POST, initial)
         if form.is_valid():

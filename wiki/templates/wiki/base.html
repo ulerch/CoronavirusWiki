@@ -31,12 +31,18 @@
   <body>
     <header>
       <a href="https://www.vfp-apsi.ch/" target="_blank"><img src="{% static 'VFP-APSI.svg' %}" width=301 height=44 alt="VFP APSI"></a>
-      <span>Coronavirus-Wiki</span>
+      <span>COVID-19 Wiki</span>
     </header>
 
     {% block content %}
       <!-- content comes here -->
     {% endblock %}
+
+    <footer>
+      This site is an initiative by <a href="https://www.vfp-apsi.ch/" target="_blank">VfP/APSI</a>,
+      designed by <a href="https://www.linkedin.com/in/urs-lerch-91bba356/" target="_blank">Urs Lerch</a>.
+    </footer>
+
     <!-- Divio Cloud -->
     {{ ALDRYN_SNAKE.render_tail }}
   </body>

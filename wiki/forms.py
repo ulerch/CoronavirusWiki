@@ -8,7 +8,6 @@ class CreateForm(forms.Form):
     text = forms.CharField(max_length=2000, widget=forms.Textarea())
     name = forms.CharField(max_length=100)
     email = forms.EmailField(max_length=100)
-    position = forms.IntegerField(widget=forms.HiddenInput())
 
     def clean(self):
         cleaned_data = super(CreateForm, self).clean()
@@ -19,7 +18,6 @@ class CreateForm(forms.Form):
         f_name = cleaned_data.get('name')
         f_email = cleaned_data.get('email')
         if f_title and f_name and f_email:
-            f_position = WikiEntry.objects.filter(row=f_row, column=f_column).count() + 1
             i_row = Row.objects.get(pk=f_row)
             i_column = Column.objects.get(pk=f_column)
             new = WikiEntry(
@@ -29,7 +27,6 @@ class CreateForm(forms.Form):
                 text = f_text,
                 contributor_name = f_name,
                 contributor_email = f_email,
-                position = f_position
             )
             new.save()
 
