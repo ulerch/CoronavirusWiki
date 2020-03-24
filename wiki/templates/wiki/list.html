@@ -5,13 +5,13 @@
 
     <h2>{{ title }}</h2>
 
-    <a href="javascript:history.back()">back to overview</a>
+    <a href="{% url 'wiki:wikiMatrix' %}">back to overview</a>
 
     {% for entry in entries %}
       <h3>{{ entry.title }}</h3>
       <p>{{ entry.text | safe }}</p>
     {% endfor %}
 
-    <button class="entryAdd">add your own thoughts</button>
+    <button id="createEntry" row="{{ row }}" col="{{ col }}">add your own thoughts</button>
 
 {% endblock content %}

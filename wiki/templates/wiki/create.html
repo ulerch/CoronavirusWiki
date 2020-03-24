@@ -1,0 +1,25 @@
+{% extends "wiki/base.html" %}
+{% load staticfiles i18n wiki_tags %}
+
+{% block content %}
+  <form id="create" class="center" role="form" method="POST" novalidate>
+    {% csrf_token %}
+    <h1>Add your Thoughts to {{ title }}</h1>
+    <a class="back" href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
+    <br>
+    <a class="back" href="{% url 'wiki:wikiList' form.row.value form.column.value %}">back to list</a>
+    <br><br>
+    <p class="red">Please do not submit more than once, even if there is no success message!</p>
+    <table>
+      {% for field in form.visible_fields %}
+        <tr>
+          <th>{{ field.label_tag }} *</th>
+          <td>
+            {{ field }}
+        </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <button class="create" type="submit">SUBMIT</button>
+  </form>
+{% endblock content %}
