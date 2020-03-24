@@ -8,8 +8,6 @@
     <a class="back" href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
     <br>
     <a class="back" href="{% url 'wiki:wikiList' form.row.value form.column.value %}">back to list</a>
-    <br><br>
-    <p class="red">Please do not submit more than once, even if there is no success message!</p>
     <table>
       {% for field in form.visible_fields %}
         <tr>

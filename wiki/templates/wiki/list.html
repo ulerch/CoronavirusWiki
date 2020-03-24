@@ -3,9 +3,11 @@
 
 {% block content %}
 
-    <h2>{{ title }}</h2>
+    <h1>Read tips, topics and thoughts in {{ title }}</h1>
 
-    <a href="{% url 'wiki:wikiMatrix' %}">back to overview</a>
+    <div class="links">
+      <a href="{% url 'wiki:wikiMatrix' %}" class="center">back to overview</a>
+    </div>
 
     {% for entry in entries %}
       <h3>{{ entry.title }}</h3>

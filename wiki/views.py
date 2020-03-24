@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Register, Row, Column, WikiEntry
 from .forms import CreateForm
 
@@ -17,26 +17,40 @@ def wikiMatrix(request):
 
 
 def wikiList(request, rowPk, colPk):
-    r = Row.objects.get(pk=rowPk)
-    c = Column.objects.get(pk=colPk)
     context = {}
     context['row'] = rowPk;
     context['col'] = colPk;
-    context['title'] = r.label + ' - ' + c.label
+    context['title'] = Row.objects.get(pk=rowPk).label + ': ' + Column.objects.get(pk=colPk).label
     context['entries'] = WikiEntry.objects.filter(row=rowPk, column=colPk)
 
     return render(request, 'wiki/list.html', context)
 
 
 def wikiCreateView(request, rowPk, colPk):
-    r = Row.objects.get(pk=rowPk)
-    c = Column.objects.get(pk=colPk)
-    context = r.label + ' - ' + c.label
+    context = Row.objects.get(pk=rowPk).label + ': ' + Column.objects.get(pk=colPk).label
     initial = {'row': rowPk, 'column': colPk}
     if request.method == 'POST':
         form = CreateForm(request.POST, initial)
         if form.is_valid():
-            pass
+            #instance = form.save(commit=False)
+            f_row = form.cleaned_data.get('row')
+            f_column = form.cleaned_data.get('column')
+            f_title = form.cleaned_data.get('title')
+            f_text = form.cleaned_data.get('text')
+            f_name = form.cleaned_data.get('name')
+            f_email = form.cleaned_data.get('email')
+            i_row = Row.objects.get(pk=f_row)
+            i_column = Column.objects.get(pk=f_column)
+            new = WikiEntry(
+                row = i_row,
+                column = i_column,
+                title = f_title,
+                text = f_text,
+                contributor_name = f_name,
+                contributor_email = f_email,
+            )
+            new.save()
+            return redirect("/")
     else:
         form = CreateForm(initial)
 
