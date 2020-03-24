@@ -106,8 +106,16 @@ table.matrix thead th::first-letter {
   margin: 0 0 5px 0;
 }
 
-.card-header button {
+.card-header span.glyphicon {
+  font-size: 9px;
+  margin-right: 3px;
+}
+
+.card-header button.btn-link {
+  width: 100%;
   color: #000000;
+  text-decoration: none !important;
+  text-align: left;
 }
 
 .card-body {
