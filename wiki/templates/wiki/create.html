@@ -2,12 +2,15 @@
 {% load staticfiles i18n wiki_tags %}
 
 {% block content %}
+  <h1>Add your Thoughts to {{ title }}</h1>
+
   <form id="create" class="center" role="form" method="POST" novalidate>
     {% csrf_token %}
-    <h1>Add your Thoughts to {{ title }}</h1>
-    <a class="back" href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
-    <br>
-    <a class="back" href="{% url 'wiki:wikiList' form.row.value form.column.value %}">back to list</a>
+    <div class="links newitem">
+      <a href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
+      <br>
+      <a href="{% url 'wiki:wikiList' form.row.value form.column.value %}">back to list</a>
+    </div>
     <table>
       {% for field in form.visible_fields %}
         <tr>

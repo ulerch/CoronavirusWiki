@@ -10,17 +10,12 @@
   cursor: pointer;
 }
 
-a.back {
-  font-size: 14px;
-  margin-bottom: 30px;
-}
-
 body {
   margin: 10px 5%;
 }
 
 header {
-  margin: 30px 0 50px 0;
+  margin: 10px 0;
 }
 
 header span {
@@ -32,17 +27,14 @@ header span {
 }
 
 footer {
-  margin-top: 50px;
+  margin-top: 30px;
   text-align: center;
-}
-
-a {
-  color: #72B5C8;
 }
 
 h1 {
+  font-size: 32px;
   text-align: center;
-  margin: 20px 0;
+  margin: 35px 0 30px 0;
 }
 
 h2 {
@@ -53,14 +45,33 @@ h3 {
   font-size: 20px;
 }
 
-h1.soul {
-  margin-bottom: 50px;
+p {
+  margin: 3px 0 0 0 ;
+}
+
+div.center-wrapper {
+  width: 100%;
+  text-align: center;
 }
 
 div.links {
   width: 100%;
   text-align: center;
-  margin-bottom: 30px;
+  margin: -10px 0 30px 0;
+}
+
+div.links.newitem {
+  margin-bottom: 0;
+}
+
+a {
+  color: #72B5C8;
+}
+
+p.soul {
+  margin: -30px 0 30px 0;
+  width: 100%;
+  text-align: center;
 }
 
 table.matrix {
@@ -86,8 +97,34 @@ table.matrix thead th::first-letter {
   font-weight: 900;
 }
 
-button.entryAdd {
-  margin-top: 50px;
+.card-header {
+  width: 100%;
+  background-color: rgb(114, 181, 200, 0.25);
+}
+
+.card-header h2 {
+  margin: 0 0 5px 0;
+}
+
+.card-header button {
+  color: #000000;
+}
+
+.card-body {
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 12px;
+}
+
+.card-body p.timestamp {
+  margin: 10px 0 20px 0;
+  font-size: 75%;
+  font-weight: 600;
+}
+
+#createEntry {
+  margin-top: 30px;
+  padding: 10px 30px;
 }
 
 #create table {
@@ -105,10 +142,10 @@ button.entryAdd {
 
 #id_title, #id_text, #id_name, #id_email {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 #create button {
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 10px 30px;
 }

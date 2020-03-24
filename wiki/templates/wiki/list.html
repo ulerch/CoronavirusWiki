@@ -9,11 +9,26 @@
       <a href="{% url 'wiki:wikiMatrix' %}" class="center">back to overview</a>
     </div>
 
-    {% for entry in entries %}
-      <h3>{{ entry.title }}</h3>
-      <p>{{ entry.text | safe }}</p>
-    {% endfor %}
+    <div class="accordion" id="accordionList">
+      {% for entry in entries %}
+        <div class="card">
+          <div class="card-header" id="heading{{ entry.pk }}">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ entry.pk }}" aria-expanded="false" aria-controls="collapse{{ entry.pk }}">
+                {{ entry.title }}
+              </button>
+            </h2>
+          </div>
+          <div id="collapse{{ entry.pk }}" class="collapse" aria-labelledby="heading{{ entry.pk }}" data-parent="#accordionList">
+            <div class="card-body">
+              <p>{{ entry.text | safe }}</p>
+              <p class="timestamp">- {{ entry.timestamp }}, {{ entry.contributor_name }} ({{ entry.contributor_email }})</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
 
-    <button id="createEntry" row="{{ row }}" col="{{ col }}">add your own thoughts</button>
+    <div class="center-wrapper"><button id="createEntry" row="{{ row }}" col="{{ col }}">add your own thoughts</button></div>
 
 {% endblock content %}
