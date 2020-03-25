@@ -15,7 +15,7 @@ body {
 }
 
 header {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 header span {
@@ -58,10 +58,6 @@ div.links {
   width: 100%;
   text-align: center;
   margin: -10px 0 30px 0;
-}
-
-div.links.newitem {
-  margin-bottom: 0;
 }
 
 a {
@@ -130,7 +126,12 @@ table.matrix thead th::first-letter {
   font-weight: 600;
 }
 
-#createEntry {
+#createInfo1 {
+  margin-bottom: 30px;
+  padding: 10px 30px;
+}
+
+#createInfo2 {
   margin-top: 30px;
   padding: 10px 30px;
 }
@@ -139,13 +140,24 @@ table.matrix thead th::first-letter {
   width: 100%;
 }
 
-#create table tr {
-  visibility: hidden;
-}
-
 #create table th {
   vertical-align: top;
   padding-right: 20px;
+  width: 100px;
+}
+
+#create table td.anonymity {
+  padding: 0 0 10px 0;
+  font-size: 80%;
+  text-align: left;
+}
+
+#create input.is-valid, #create textarea.is-valid {
+  border-color: green;
+}
+
+#create input.is-invalid, #create textarea.is-invalid {
+  border-color: red;
 }
 
 #id_title, #id_text, #id_name, #id_email {

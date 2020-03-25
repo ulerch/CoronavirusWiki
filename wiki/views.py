@@ -20,30 +20,31 @@ def wikiList(request, rowPk, colPk):
     context = {}
     context['row'] = rowPk;
     context['col'] = colPk;
-    context['title'] = Row.objects.get(pk=rowPk).label + ': ' + Column.objects.get(pk=colPk).label
+    context['title'] = Row.objects.get(pk=rowPk).label + ' - ' + Column.objects.get(pk=colPk).label
     context['entries'] = WikiEntry.objects.filter(row=rowPk, column=colPk)
 
     return render(request, 'wiki/list.html', context)
 
 
 def wikiCreateView(request, rowPk, colPk):
-    context = Row.objects.get(pk=rowPk).label + ': ' + Column.objects.get(pk=colPk).label
-    initial = {'row': rowPk, 'column': colPk}
+    context = {}
+    context['row'] = rowPk
+    context['col'] = colPk
+    context['title'] = Row.objects.get(pk=rowPk).label + ' - ' + Column.objects.get(pk=colPk).label
+
     if request.method == 'POST':
-        form = CreateForm(request.POST, initial)
+        form = CreateForm(request.POST)
         if form.is_valid():
             #instance = form.save(commit=False)
-            f_row = form.cleaned_data.get('row')
-            f_column = form.cleaned_data.get('column')
             f_title = form.cleaned_data.get('title')
             f_text = form.cleaned_data.get('text')
             f_name = form.cleaned_data.get('name')
             f_email = form.cleaned_data.get('email')
-            i_row = Row.objects.get(pk=f_row)
-            i_column = Column.objects.get(pk=f_column)
+            f_row = Row.objects.get(pk=rowPk)
+            f_column = Column.objects.get(pk=colPk)
             new = WikiEntry(
-                row = i_row,
-                column = i_column,
+                row = f_row,
+                column = f_column,
                 title = f_title,
                 text = f_text,
                 contributor_name = f_name,
@@ -52,6 +53,6 @@ def wikiCreateView(request, rowPk, colPk):
             new.save()
             return redirect("/")
     else:
-        form = CreateForm(initial)
+        form = CreateForm()
 
-    return render(request, 'wiki/create.html', {'form': form, 'title': context})
+    return render(request, 'wiki/create.html', {'form': form, 'context': context})

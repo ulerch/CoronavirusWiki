@@ -1,25 +1,44 @@
 {% extends "wiki/base.html" %}
-{% load staticfiles i18n wiki_tags %}
+{% load staticfiles i18n widget_tweaks wiki_tags %}
 
 {% block content %}
-  <h1>Add your Thoughts to {{ title }}</h1>
+  <h1>Add your info to {{ context.title }}</h1>
+
+  <div class="links">
+    <a href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
+    <br>
+    <a href="{% url 'wiki:wikiList' context.row context.col %}">back to list</a>
+  </div>
 
   <form id="create" class="center" role="form" method="POST" novalidate>
     {% csrf_token %}
-    <div class="links newitem">
-      <a href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
-      <br>
-      <a href="{% url 'wiki:wikiList' form.row.value form.column.value %}">back to list</a>
-    </div>
+
+    {% if form.non_field_errors %}
+    {% endif %}
     <table>
       {% for field in form.visible_fields %}
         <tr>
           <th>{{ field.label_tag }} *</th>
           <td>
-            {{ field }}
+            {% if form.is_bound %}
+              {% if field.errors %}
+                {% render_field field class="form-control is-invalid" %}
+              {% else %}
+                {% render_field field class="form-control is-valid" %}
+              {% endif %}
+            {% else %}
+              {% render_field field class="form-control" %}
+            {% endif %}
         </td>
         </tr>
       {% endfor %}
+      <tr>
+        <th></th>
+        <td class="anonymity">
+          We guarantee maximum anonymity by not storing any user data that is not explicitly sent to us via the form fields.
+          All form data is transmitted via encrypted connections.
+        </td>
+      <tr>
     </table>
     <button class="create" type="submit">SUBMIT</button>
   </form>
