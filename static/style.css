@@ -88,9 +88,8 @@ table.matrix td:first-child,table.matrix th:first-child {
   border-right: 2px solid
 }
 
-table.matrix thead th::first-letter {
+.first_letter_red::first-letter {
   color: red;
-  font-weight: 900;
 }
 
 #registers {
