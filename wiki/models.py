@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from datetime import datetime
 
 
 class Register (models.Model):
@@ -18,7 +19,7 @@ class Register (models.Model):
 
 
 class Row(models.Model):
-    register = models.ForeignKey(Register, null=True, on_delete=models.CASCADE)
+    register = models.ForeignKey(Register, null=False, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=40, null=False, blank=False)
     label = models.CharField(max_length=100, null=False, blank=False)
     description = RichTextField(null=True, blank=True)
@@ -34,7 +35,7 @@ class Row(models.Model):
 
 
 class Column(models.Model):
-    register = models.ForeignKey(Register, null=True, on_delete=models.CASCADE)
+    register = models.ForeignKey(Register, null=False, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=40, null=False, blank=False)
     label = models.CharField(max_length=100, null=False, blank=False)
     description = RichTextField(null=True, blank=True)
@@ -56,7 +57,7 @@ class WikiEntry(models.Model):
     text = RichTextField(null=True, blank=True)
     contributor_name = models.CharField(max_length=100, null=False, blank=False)
     contributor_email = models.EmailField(max_length=100, null=False, blank=False)
-    timestamp = models.DateTimeField(auto_now_add=True, editable=False, null=True, blank=True)
+    timestamp = models.DateTimeField(editable=False, null=False, blank=False, default=datetime.now)
 
     class Meta(object):
         ordering = ['row', 'column', 'timestamp']
