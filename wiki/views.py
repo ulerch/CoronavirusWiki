@@ -3,13 +3,13 @@ from .models import Register, Row, Column, WikiEntry
 from .forms import CreateForm
 
 
-def register(request):
-    return {'register': Register.objects.all()}
-
-
-def wikiMatrix(request):
+def wikiMatrix(request, regPk=None):
     context = {}
-    regPk = Register.objects.get(position=1).pk;
+    if regPk is None:
+        regPk = Register.objects.first().pk
+
+    context['active_reg'] = regPk
+    context['regs'] = Register.objects.all()
     context['cols'] = Column.objects.filter(register=regPk)
     context['rows'] = Row.objects.filter(register=regPk)
 

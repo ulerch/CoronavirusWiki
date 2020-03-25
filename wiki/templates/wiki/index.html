@@ -35,6 +35,21 @@
         {% endfor %}
       </tbody>
     </table>
+
+    {% comment %}
+    <ul id="registers" class="nav nav-tabs">
+      {% for reg in regs %}
+        <li class="nav-item">
+          {% if reg.pk == active_reg %}
+            <a class="nav-link active" href="#">{{ reg.label }}</a>
+          {% else %}
+            <a class="nav-link" href="{% url 'wiki:wikiMatrix' reg.pk %}">{{ reg.label }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% endcomment %}
+
     <p>
       We guarantee maximum anonymity by not storing any user data that is not explicitly sent to us via the form fields.
       We do not use cookies or third-party services such as Google Analytics.
