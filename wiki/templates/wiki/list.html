@@ -1,5 +1,5 @@
 {% extends "wiki/base.html" %}
-{% load staticfiles i18n wiki_tags %}
+{% load staticfiles i18n tz wiki_tags %}
 
 {% block content %}
 
@@ -25,7 +25,9 @@
           <div id="collapse{{ entry.pk }}" class="collapse" aria-labelledby="heading{{ entry.pk }}" data-parent="#accordionList">
             <div class="card-body">
               <p>{{ entry.text | safe | urlize }}</p>
-              <p class="timestamp">- {{ entry.timestamp }}, {{ entry.contributor_name }} ({{ entry.contributor_email }})</p>
+              <p class="timestamp">
+                - {{ entry.timestamp }},
+                {{ entry.contributor_name }} ({{ entry.contributor_email }})</p>
             </div>
           </div>
         </div>

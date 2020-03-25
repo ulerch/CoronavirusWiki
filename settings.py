@@ -5,7 +5,7 @@
 #   http://docs.divio.com/en/latest/reference/configuration-settings-file.html
 #
 # and comments below.
-
+TIME_ZONE = 'Europe/Zurich'
 
 # INSTALLED_ADDONS is a list of self-configuring Divio Cloud addons - see the
 # Addons view in your project's dashboard. See also the addons directory in
