@@ -29,6 +29,9 @@
             {% else %}
               {% render_field field class="form-control" %}
             {% endif %}
+            {% if field.help_text %}
+              <div class="help_text">{{ field.help_text }}</div>
+            {% endif %}
         </td>
         </tr>
       {% endfor %}

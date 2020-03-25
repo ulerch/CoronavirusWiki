@@ -24,7 +24,7 @@
           </div>
           <div id="collapse{{ entry.pk }}" class="collapse" aria-labelledby="heading{{ entry.pk }}" data-parent="#accordionList">
             <div class="card-body">
-              <p>{{ entry.text | safe }}</p>
+              <p>{{ entry.text | safe | urlize }}</p>
               <p class="timestamp">- {{ entry.timestamp }}, {{ entry.contributor_name }} ({{ entry.contributor_email }})</p>
             </div>
           </div>

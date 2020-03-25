@@ -3,7 +3,7 @@ from .models import WikiEntry, Row, Column
 
 class CreateForm(forms.Form):
     title = forms.CharField(max_length=100)
-    text = forms.CharField(max_length=2000, widget=forms.Textarea())
+    text = forms.CharField(max_length=2000, widget=forms.Textarea(), help_text="Max. length for the text is 2000 characters.")
     name = forms.CharField(max_length=100)
     email = forms.EmailField(max_length=100)
 

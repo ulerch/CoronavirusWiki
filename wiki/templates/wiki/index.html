@@ -27,7 +27,9 @@
         <tr>
           <td>{{ row.label }}</td>
           {% for col in cols %}
-            <td class="detail_link center" row={{ row.pk }} col={{ col.pk }}>{% wiki_count row.pk col.pk %} entries</td>
+            <td class="detail_link center" row={{ row.pk }} col={{ col.pk }}>
+              {% wiki_count row.pk col.pk %} info
+            </td>
           {% endfor %}
         </tr>
         {% endfor %}

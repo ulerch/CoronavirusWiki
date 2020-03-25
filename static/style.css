@@ -160,6 +160,12 @@ table.matrix thead th::first-letter {
   border-color: red;
 }
 
+#create .help_text {
+  margin: -10px 0 10px 0;
+  font-size: 80%;
+  text-align: left;
+}
+
 #id_title, #id_text, #id_name, #id_email {
   width: 100%;
   margin-bottom: 10px;
