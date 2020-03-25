@@ -4,14 +4,14 @@
 {% block content %}
   <h1>Peer support thru <span class="red">SOUL</span></h1>
   <p class="soul">(
-    <span class="red">S</span>tart ,
+    <span class="red">S</span>tart,
     <span class="red">O</span>ngoing,
     <span class="red">U</span>nlock,
     <span class="red">L</span>essons learned)
   </p>
   <p><b>Aim:</b> To bundle tips, topics and thoughts on COVID-19 from nurse scientist through peer support.</p>
   <p><b>Contributors:</b> In a first step VFP/APSI members with at least MScN degrees (if successful extend to other groups).</p>
-  <p><b>Instruction:</b> First read the entries in the boxes and then add your own entry.</p>
+  <p><b>Instruction:</b> Click a box, read the entries and then add your own info if neccessary.Click a box, read the entries, and then add your additional info if it is lacking.</p>
   <p><b>Language:</b> Preferably English (but German and French possible as well)</p>
     <table class="matrix">
       <thead>
@@ -28,7 +28,7 @@
           <td>{{ row.label }}</td>
           {% for col in cols %}
             <td class="detail_link center" row={{ row.pk }} col={{ col.pk }}>
-              {% wiki_count row.pk col.pk %} info
+              {% wiki_count row.pk col.pk %} entries
             </td>
           {% endfor %}
         </tr>
