@@ -6,7 +6,7 @@
     <h1>Existing info in {{ title }}</h1>
 
     <div class="links">
-      <a href="{% url 'wiki:wikiMatrix' %}" class="center">back to overview</a>
+      <a href="{% url 'wiki:wikiMatrix' register %}" class="center">back to overview</a>
     </div>
 
     <div class="center-wrapper"><button id="createInfo1" row="{{ row }}" col="{{ col }}">add your info</button></div>
@@ -17,7 +17,7 @@
           <div class="card-header" id="heading{{ entry.pk }}">
             <h2 class="mb-0">
               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ entry.pk }}" aria-expanded="false" aria-controls="collapse{{ entry.pk }}">
-                <span class="glyphicon glyphicon-chevron-down"></span>
+                <i class="icon fal fa-angle-down"></i>
                 {{ entry.title }}
               </button>
             </h2>

@@ -17,20 +17,26 @@ def wikiMatrix(request, regPk=None):
 
 
 def wikiList(request, rowPk, colPk):
+    row = Row.objects.get(pk=rowPk)
+    col = Column.objects.get(pk=colPk)
     context = {}
+    context['register'] = row.register.pk
     context['row'] = rowPk;
     context['col'] = colPk;
-    context['title'] = Row.objects.get(pk=rowPk).label + ' - ' + Column.objects.get(pk=colPk).label
+    context['title'] = row.label + ' - ' + col.label
     context['entries'] = WikiEntry.objects.filter(row=rowPk, column=colPk)
 
     return render(request, 'wiki/list.html', context)
 
 
 def wikiCreateView(request, rowPk, colPk):
+    row = Row.objects.get(pk=rowPk)
+    col = Column.objects.get(pk=colPk)
     context = {}
+    context['reg'] = row.register.pk
     context['row'] = rowPk
     context['col'] = colPk
-    context['title'] = Row.objects.get(pk=rowPk).label + ' - ' + Column.objects.get(pk=colPk).label
+    context['title'] = row.label + ' - ' + col.label
 
     if request.method == 'POST':
         form = CreateForm(request.POST)
@@ -51,7 +57,7 @@ def wikiCreateView(request, rowPk, colPk):
                 contributor_email = f_email,
             )
             new.save()
-            return redirect("/")
+            return redirect("/register-" + str(row.register.pk))
     else:
         form = CreateForm()
 

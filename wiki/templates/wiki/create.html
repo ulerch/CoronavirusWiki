@@ -5,7 +5,7 @@
   <h1>Add your info to {{ context.title }}</h1>
 
   <div class="links">
-    <a href="{% url 'wiki:wikiMatrix' %}">back to start page</a>
+    <a href="{% url 'wiki:wikiMatrix' context.reg %}">back to start page</a>
     <br>
     <a href="{% url 'wiki:wikiList' context.row context.col %}">back to list</a>
   </div>

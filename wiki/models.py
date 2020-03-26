@@ -30,7 +30,7 @@ class Row(models.Model):
         verbose_name_plural = 'Rows'
 
     def __str__(self):
-        return "{} (Register {} - Position {})".format(self.name, self.register, self.position)
+        return "{}: {} ({})".format(self.register, self.name, self.position)
 
 
 class Column(models.Model):
@@ -46,7 +46,7 @@ class Column(models.Model):
         verbose_name_plural = 'Columns'
 
     def __str__(self):
-        return "{} (Register {} - Position {})".format(self.name, self.register, self.position)
+        return "{}: {} ({})".format(self.register, self.name, self.position)
 
 
 class WikiEntry(models.Model):
