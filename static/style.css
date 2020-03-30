@@ -133,7 +133,13 @@ table.matrix td:first-child,table.matrix th:first-child {
 
 #heading-instruction {
   background-color: transparent;
-  border: none;
+  border-top: none;
+}
+
+#heading-instruction button {
+  font-size: 1.5em;
+  color: #72B5C8;
+  text-align: center;
 }
 
 .card-header {
