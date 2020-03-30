@@ -10,10 +10,31 @@
     <span class="red">L</span>essons learned )
   </p>
 
-  <p><b>Aim:</b> To bundle tips, topics and thoughts on COVID-19 from nurse scientist through peer support.</p>
-  <p><b>Contributors:</b> In a first step VFP/APSI members with at least MScN degrees (if successful extend to other groups).</p>
-  <p><b>Instruction:</b> Click a box, read the entries and then add your own info if neccessary.</p>
-  <p><b>Language:</b> Preferably English (but German and French possible as well)</p>
+  <div id="accordion-instruction" class="accordion">
+    <div class="card">
+      <div id="heading-instruction" class="card-header">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-instruction" aria-expanded="false" aria-controls="collapse--instruction">
+          <b>Instructions</b>
+          <i class="icon fal fa-angle-down"></i>
+        </button>
+      </div>
+      <div id="collapse-instruction" class="collapse" aria-labelledby="heading-instruction" data-parent="#accordion-instruction">
+        <div class="card-body">
+          <p><b><span class="red">S</span>tart</b> = priority for epidemic/pandemic beginning</p>
+          <p><b><span class="red">O</span>ngoing</b> = priority during epidemic/pandemic</p>
+          <p><b><span class="red">U</span>nlock</b> = priority at the end of the epidemic/pandemic</p>
+          <p><b><span class="red">L</span>essons learned</b> = for 2nd wave or for other epidemic/pandemic outbreaks (e.g. influenza)</p>
+          <br>
+          <p><b>Aim:</b> Peer support for graduate nurses (MScN) to bundle tips, topics and thoughts on COVID-19/SARS-Cov-2.</p>
+          <p><b>Contributors:</b> In a first step VFP/APSI members with at least MScN degrees (if successful extend to other groups).</p>
+          <p><b>Language:</b> Preferably English (but German and French possible as well)</p>
+          <br>
+          <p><b>Let's start!</b> Click a box, read the entries and then add your own info if neccessary.</p>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <ul id="registers" class="nav nav-tabs">
     {% for reg in regs %}
@@ -32,14 +53,40 @@
         <tr>
           <th width="20%"> </td>
           {% for col in cols %}
-            <th class="center first_letter_red" width="20%">{{ col.label }}</td>
+            <th class="center first_letter_red" width="20%">
+              {% if col.description %}
+                <a role="button"
+                  tabindex="0"
+                  data-toggle="popover"
+                  data-trigger="focus"
+                  data-placement="top"
+                  data-content="{{ col.description | striptags | safe }}">
+                  {{ col.label }}
+                </a>
+              {% else %}
+                {{ col.label }}
+              {% endif %}
+            </td>
           {% endfor %}
         </tr>
       </thead>
       <tbody>
         {% for row in rows %}
         <tr>
-          <td>{{ row.label }}</td>
+          <td>
+            {% if row.description %}
+              <a role="button"
+                tabindex="0"
+                data-toggle="popover"
+                data-trigger="focus"
+                data-placement="right"
+                data-content="{{ row.description | striptags | safe }}">
+                {{ row.label }}
+              </a>
+            {% else %}
+              {{ row.label }}
+            {% endif %}
+          </td>
           {% for col in cols %}
             <td class="detail_link center" row={{ row.pk }} col={{ col.pk }}>
               {% wiki_count row.pk col.pk %} entries

@@ -60,6 +60,20 @@ div.links {
   margin: -10px 0 30px 0;
 }
 
+a[data-toggle="popover"]:not([aria-describedby]) {
+  cursor: pointer;
+}
+
+div.popover {
+  margin: 20px;
+}
+
+div.popover-body {
+  background-color: rgb(114, 181, 200, 0.125);
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 a {
   color: #72B5C8;
 }
@@ -108,9 +122,18 @@ table.matrix td:first-child,table.matrix th:first-child {
   margin-bottom: 5px;
 }
 
+#accordion-instruction .card {
+  border: none;
+}
+
 .card-header {
   width: 100%;
   background-color: rgb(114, 181, 200, 0.25);
+}
+
+#heading-instruction {
+  background-color: transparent;
+  border: none;
 }
 
 .card-header {
@@ -120,6 +143,10 @@ table.matrix td:first-child,table.matrix th:first-child {
 .card-header i.icon {
   margin: 0 5px 0 0;
   color: rgba(0, 0, 0, 0.5)
+}
+
+#heading-instruction i.icon {
+  margin: 0 0 0 5px;
 }
 
 .card-header button.btn-link {
