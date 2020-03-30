@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  $('[data-toggle="popover"]').popover();
+  $('[data-toggle="tooltip"]').tooltip();
   $('td.detail_link').on('click tap', function() {
     window.location.href = 'list-' + this.attributes.row.value + '-' + this.attributes.col.value + '/';
   });

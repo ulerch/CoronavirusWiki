@@ -55,14 +55,11 @@
           {% for col in cols %}
             <th class="center first_letter_red" width="20%">
               {% if col.description %}
-                <a role="button"
-                  tabindex="0"
-                  data-toggle="popover"
-                  data-trigger="focus"
+                <span data-toggle="tooltip"
                   data-placement="top"
-                  data-content="{{ col.description | striptags | safe }}">
+                  title="{{ col.description | striptags | safe }}">
                   {{ col.label }}
-                </a>
+                </span>
               {% else %}
                 {{ col.label }}
               {% endif %}
@@ -75,14 +72,11 @@
         <tr>
           <td>
             {% if row.description %}
-              <a role="button"
-                tabindex="0"
-                data-toggle="popover"
-                data-trigger="focus"
+              <span data-toggle="tooltip"
                 data-placement="right"
-                data-content="{{ row.description | striptags | safe }}">
+                title="{{ row.description | striptags | safe }}">
                 {{ row.label }}
-              </a>
+              </span>
             {% else %}
               {{ row.label }}
             {% endif %}
