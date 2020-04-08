@@ -109,10 +109,63 @@ a {
   color: #72B5C8;
 }
 p.soul {
-
   margin: -30px 0 30px 0;
   width: 100%;
   text-align: center;
+}
+
+#registers {
+  margin: 30px 0 0 0;
+  border: none;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: transparent;
+  border: none;
+}
+
+#registers li.nav-item {
+  width: 25%;
+  height: 4.2em;
+  text-align: center;
+}
+
+#registers li.nav-item a {
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+#registers li.nav-item a.active {
+  font-weight: bold;
+}
+
+#registers li.nav-item:not(:first-of-type) a {
+  border-left: none;
+}
+
+#registers li.nav-item:nth-of-type(1n) a {
+  background-color: rgba(114, 181, 200, 0.5);
+}
+
+#registers li.nav-item:nth-of-type(2n) a {
+  background-color: rgba(94, 201, 205, 0.5);
+}
+
+#registers li.nav-item:nth-of-type(3n) a {
+  background-color: rgba(97, 219, 193, 0.5);
+}
+
+#registers li.nav-item:nth-of-type(4n) a {
+  background-color: rgba(133, 234, 169, 0.5);
+}
+
+#registers li.nav-item:nth-of-type(5n) a {
+  background-color: rgba(186, 244, 139, 0.5);
+}
+
+#registers li.nav-item:nth-of-type(6n) a {
+  background-color: rgba(249, 248, 113, 0.5);
 }
 
 table.matrix {
@@ -135,18 +188,6 @@ table.matrix td:first-child,table.matrix th:first-child {
 
 .first_letter_red::first-letter {
   color: red;
-}
-
-#registers {
-  margin: 30px 0 3px 0;
-}
-
-#registers a {
-  color: #000000;
-}
-
-#registers a.active {
-  font-weight: bold;
 }
 
 .card {

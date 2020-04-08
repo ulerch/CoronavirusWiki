@@ -41,6 +41,7 @@
       <li class="nav-item">
         {% if reg.pk == active_reg %}
           <a class="nav-link active" href="#">{{ reg.label }}</a>
+          <i class="fas fa-caret-down"></i>
         {% else %}
           <a class="nav-link" href="{% url 'wiki:wikiMatrix' reg.pk %}">{{ reg.label }}</a>
         {% endif %}
